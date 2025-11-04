@@ -335,7 +335,7 @@ impl Plugin for ImplComponentPropertiesPlugin {
             "-bevy-image" => ImageNode[".image"],
             "-bevy-image-color" => ImageNode[".color"],
             "-bevy-image-mode" => ImageNode[".image_mode"],
-            "-bevy-image-rect" => ImageNode[".rect"],
+            // "-bevy-image-rect" => ImageNode[".rect"],
 
             // Text fields
             "color" => TextColor[".0"],
