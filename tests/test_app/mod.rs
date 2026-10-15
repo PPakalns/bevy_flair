@@ -23,10 +23,10 @@ mod gated_reader {
     use async_channel::{Receiver, Sender};
     use bevy::asset::io::{AssetReader, AssetReaderError, PathStream, Reader};
     use bevy::platform::collections::HashMap;
-    use std::path::Path;
+    use std::path::{Path, PathBuf};
     use std::sync::{Arc, Mutex, PoisonError};
 
-    type Gates = Arc<Mutex<HashMap<Box<Path>, (Sender<()>, Receiver<()>)>>>;
+    type Gates = Arc<Mutex<HashMap<PathBuf, (Sender<()>, Receiver<()>)>>>;
 
     /// A "gated" reader that will prevent asset reads from returning until
     /// a given path has been "opened" using [`GateOpener`].
@@ -56,7 +56,7 @@ mod gated_reader {
         pub fn open<P: AsRef<Path>>(&self, path: P) {
             let mut gates = self.gates.lock().unwrap_or_else(PoisonError::into_inner);
             let gates = gates
-                .entry_ref(path.as_ref())
+                .entry_ref::<Path>(path.as_ref())
                 .or_insert_with(async_channel::unbounded);
             gates.0.send_blocking(()).unwrap();
         }
@@ -82,7 +82,7 @@ mod gated_reader {
             let receiver = {
                 let mut gates = self.gates.lock().unwrap_or_else(PoisonError::into_inner);
                 let gates = gates
-                    .entry_ref(path.as_ref())
+                    .entry_ref::<Path>(path.as_ref())
                     .or_insert_with(async_channel::unbounded);
                 gates.1.clone()
             };

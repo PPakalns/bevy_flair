@@ -54,7 +54,6 @@ selectors = { workspace = true }
 precomputed-hash = { version = "0.1" }
 
 [features]
-ghost_nodes = ["bevy_ui/ghost_nodes"]
 trace = []
 detailed_trace = ["trace"]
 

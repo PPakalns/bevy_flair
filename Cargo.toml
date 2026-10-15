@@ -55,7 +55,6 @@ bevy_flair_css_parser = { workspace = true }
 
 [features]
 default = []
-ghost_nodes = ["bevy_flair_style/ghost_nodes"]
 trace = ["bevy_flair_style/trace"]
 detailed_trace = ["bevy_flair_style/detailed_trace", "trace"]
 
@@ -77,6 +76,27 @@ cssparser = { version = "0.37" }
 [[bench]]
 name = "flair_benches"
 harness = false
+
+[patch.crates-io]
+bevy_app = { path = "/home/pakalns/wdir/bevy/crates/bevy_app" }
+bevy_asset = { path = "/home/pakalns/wdir/bevy/crates/bevy_asset" }
+bevy_camera = { path = "/home/pakalns/wdir/bevy/crates/bevy_camera" }
+bevy_color = { path = "/home/pakalns/wdir/bevy/crates/bevy_color" }
+bevy_curve = { path = "/home/pakalns/wdir/bevy/crates/bevy_curve" }
+bevy_ecs = { path = "/home/pakalns/wdir/bevy/crates/bevy_ecs" }
+bevy_image = { path = "/home/pakalns/wdir/bevy/crates/bevy_image" }
+bevy_input_focus = { path = "/home/pakalns/wdir/bevy/crates/bevy_input_focus" }
+bevy_math = { path = "/home/pakalns/wdir/bevy/crates/bevy_math" }
+bevy_picking = { path = "/home/pakalns/wdir/bevy/crates/bevy_picking" }
+bevy_reflect = { path = "/home/pakalns/wdir/bevy/crates/bevy_reflect" }
+bevy_tasks = { path = "/home/pakalns/wdir/bevy/crates/bevy_tasks" }
+bevy_text = { path = "/home/pakalns/wdir/bevy/crates/bevy_text" }
+bevy_time = { path = "/home/pakalns/wdir/bevy/crates/bevy_time" }
+bevy_ui = { path = "/home/pakalns/wdir/bevy/crates/bevy_ui" }
+bevy_ui_widgets = { path = "/home/pakalns/wdir/bevy/crates/bevy_ui_widgets" }
+bevy_utils = { path = "/home/pakalns/wdir/bevy/crates/bevy_utils" }
+bevy_window = { path = "/home/pakalns/wdir/bevy/crates/bevy_window" }
+bevy = { path = "/home/pakalns/wdir/bevy" }
 
 [profile.bench]
 debug = true
